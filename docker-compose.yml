@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    links:
+      - app
+  app:
+    build: .
+    container_name: "regis-container"
+    command: gunicorn -b 0.0.0.0:6000 app:app
+    ports:
+      - "6000:6000"
+    restart: always
