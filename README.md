@@ -14,6 +14,6 @@ source .venv/bin/activate
 pip install -U pip; pip install -r requirements.txt
 
 
-flask run -p 6000 -h 0.0.0.0
+gunicorn -b 0.0.0.0:5000 app:app
 ```
 
